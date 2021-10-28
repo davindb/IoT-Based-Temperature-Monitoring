@@ -1,11 +1,10 @@
+import path from "path";
 import express from "express";
 import usersRoutes from "./routes/temperatures.js";
 import { fileURLToPath } from "url";
-// console.log(import.meta.url);
-// import.meta.url = file:///C:/Users/Davin/Documents/Web%20Development/Node/index.js
-const __dirname = fileURLToPath(
-  "file:///C:/Users/Davin/Documents/Web%20Development/IoT/IoT-Based-Temperature-Monitoring"
-);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.static("public"));
