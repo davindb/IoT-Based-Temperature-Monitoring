@@ -158,6 +158,9 @@
     <section class="features3 cid-sN3favfkU6 pb-5" id="fitur">
       <div class="container">
         <div class="row justify-content-center">
+          <div class="col-12 col-md-12 col-lg-12 pb-5">
+            <canvas id="myChart"></canvas>
+          </div>
           <div class="col-12 col-md-6 col-lg-4 pb-5">
             <a id="status_trafo" href="#"
               ><div id="status_card" class="card-wrapper fitur-padding">
@@ -503,13 +506,13 @@
           <div class="col-sm-6 col-lg-4">
             <div class="card-wrap">
               <div class="image-wrap">
-                <img src="assets/images/team1.jpg" />
+                <img src="assets/images/team3.jpg" />
               </div>
               <div class="content-wrap">
                 <h5
                   class="card-title mbr-fonts-style align-center m-0 display-5"
                 >
-                  Davin DB
+                  Davin Darmalaksana Bhagaspati
                 </h5>
                 <div class="role-wrap">
                   <h6
@@ -547,98 +550,8 @@
     <script src="assets/dropdown/js/navbar-dropdown.js"></script>
     <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/theme/js/script.js"></script>
-    <script>
-      // const url = `http://192.168.68.105:5000/temperatures`;
-      const url = `http://localhost:5000/temperatures`;
-      let temp, tempName, selectedTemp;
-      setInterval(function () {
-        $.ajax({
-          url: url,
-          method: "GET",
-          datatype: "jsonp",
-          headers: {
-            "X-Parse-Application-Id": "MyAPPID",
-            "Content-Type": "application/json",
-          },
-          async: false,
-        })
-          .done((data) => {
-            temp = data[data.length - 1];
-          })
-          .fail((err) => {
-            console.log(err);
-          });
-
-        if (!window.localStorage.temp_name) {
-          localStorage.setItem("temp_name", 1);
-        }
-
-        tempName = Number(window.localStorage.temp_name);
-
-        if (tempName === 1) {
-          selectedTemp = temp.temp_belitan;
-          tempName = "Suhu Belitan";
-        } else {
-          selectedTemp = temp.temp_intibesi;
-          tempName = "Suhu Inti Besi";
-        }
-
-        $("#temp_name").text(`${tempName}`);
-        $("#temp_stat").text(`${selectedTemp}°C`);
-
-        statusCheck(selectedTemp);
-      }, 500);
-
-      function indikator(num) {
-        [1, 2, 3, 4].forEach((el) => {
-          $(`#ind_${el}_stat`).text("OFF");
-          if (el === num) {
-            $(`#ind_${el}_stat`).text("ON");
-          }
-          if (num >= 3) {
-            $("#fan_stat").text("ON");
-            return;
-          }
-          $("#fan_stat").text("OFF");
-        });
-      }
-
-      function statusCheck(temp) {
-        if (temp < 10) {
-          $("#status_stat").text("NORMAL");
-          $("#status_card").css({ background: "rgb(0, 255, 0)" });
-
-          indikator(2);
-        } else if (temp < 20) {
-          $("#status_stat").text("WARNING");
-          $("#status_card").css({ background: "rgb(255, 255, 0)" });
-          indikator(3);
-        } else {
-          $("#status_stat").text("EMERGENCY");
-          $("#status_card").css({ background: "rgb(255, 0, 0)" });
-          indikator(4);
-        }
-      }
-
-      function tempClick(e) {
-        e.preventDefault();
-        if (!window.localStorage.temp_name) {
-          localStorage.setItem("temp_name", 1);
-        }
-        tempName = Number(window.localStorage.temp_name);
-        if (tempName === 1) {
-          selectedTemp = temp.temp_intibesi;
-          tempName = "Suhu Inti Besi";
-          localStorage.setItem("temp_name", 2);
-        } else {
-          selectedTemp = temp.temp_belitan;
-          tempName = "Suhu Belitan";
-          localStorage.setItem("temp_name", 1);
-        }
-        $("#temp_name").text(`${tempName}`);
-        $("#temp_stat").text(`${selectedTemp}°C`);
-        statusCheck(selectedTemp);
-      }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script src="src/chart.js"></script>
+    <script src="src/script.js"></script>
   </body>
 </html>
