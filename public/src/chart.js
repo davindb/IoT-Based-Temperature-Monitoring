@@ -25,7 +25,9 @@ const myChart = new Chart(ctx, {
   options: {
     scales: {
       y: {
-        beginAtZero: true,
+        // beginAtZero: true,
+        min: 0,
+        max: 100,
       },
     },
   },

@@ -4,6 +4,20 @@ const router = express.Router();
 
 const temperatures = [];
 
+setInterval(function () {
+  const temp_belitan = Math.round(Math.random() * 100);
+  const temp_intibesi = Math.round(Math.random() * 100);
+  const date = new Date().toISOString();
+
+  const data = {
+    temp_belitan,
+    temp_intibesi,
+    date,
+  };
+
+  temperatures.push(data);
+}, 500);
+
 router.get("/", (req, res) => {
   res.send(temperatures);
 });

@@ -92,7 +92,7 @@ function tempClick(e) {
 
 setInterval(function () {
   // Updating chart
-  const maxDataLength = 10;
+  const maxDataLength = 20;
   let init;
   tempData.length < maxDataLength
     ? (init = 0)
@@ -107,5 +107,5 @@ setInterval(function () {
   myChart.data.labels = chartLabels;
   myChart.data.datasets[0].data = chartBelitan;
   myChart.data.datasets[1].data = chartIntiBesi;
-  myChart.update();
+  myChart.update("resize");
 }, 500);
