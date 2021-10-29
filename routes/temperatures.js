@@ -2,12 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-const temperatures = [
-  {
-    temp_belitan: "5",
-    temp_intibesi: "15",
-  },
-];
+const temperatures = [];
 
 router.get("/", (req, res) => {
   res.send(temperatures);
@@ -16,6 +11,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const data = req.body;
   console.log(data);
+  data.date = new Date().toISOString();
   temperatures.push(data);
   res.send(data);
 });
