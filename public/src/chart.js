@@ -9,7 +9,7 @@ const myChart = new Chart(ctx, {
         data: [],
         backgroundColor: "transparent",
         borderColor: "rgb(220, 0, 0)",
-        borderWidth: 4,
+        borderWidth: 2,
         tension: 0.3,
       },
       {
@@ -17,15 +17,19 @@ const myChart = new Chart(ctx, {
         data: [],
         backgroundColor: "transparent",
         borderColor: "rgb(75, 192, 192)",
-        borderWidth: 4,
+        borderWidth: 2,
         tension: 0.3,
       },
     ],
   },
   options: {
+    elements: {
+      point: {
+        pointStyle: "line",
+      },
+    },
     scales: {
       y: {
-        // beginAtZero: true,
         min: 0,
         max: 100,
       },
