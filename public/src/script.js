@@ -54,12 +54,12 @@ function indikator(num) {
 }
 
 function statusCheck(temp) {
-  if (temp < 10) {
+  if (temp < 20) {
     $("#status_stat").text("NORMAL");
     $("#status_card").css({ background: "rgb(0, 255, 0)" });
 
     indikator(2);
-  } else if (temp < 20) {
+  } else if (temp < 50) {
     $("#status_stat").text("WARNING");
     $("#status_card").css({ background: "rgb(255, 255, 0)" });
     indikator(3);
