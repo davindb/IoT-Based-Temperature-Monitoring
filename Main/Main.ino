@@ -79,6 +79,7 @@ void tcaselect(uint8_t i) {
   Wire.endTransmission();
 }
 
+// SENSOR ATAS
 float sensorA(){
   tcaselect(1);
   float temp = mlxA.readObjectTempC();
@@ -88,6 +89,7 @@ float sensorA(){
   return temp;
 }
 
+// SENSOR SAMPING
 float sensorB(){
   tcaselect(2);
   float temp = mlxB.readObjectTempC();
@@ -125,26 +127,31 @@ void setup() {
 void loop() {
   //Send an HTTP POST request every X milliseconds (timerDelay variable)
   if ((millis() - lastTime) > timerDelay) {
-    float tempBelitan = sensorA();
-    float tempIntiBesi = sensorB();
+    float tempAtas = sensorA();
+    float tempSamping = sensorB();
+    String trafoStatus;
 
-    if(tempBelitan > 1000 || tempIntiBesi > 1000){
+    if(tempAtas > 1000 || tempSamping > 1000){
       whiteOn();
-    } else if(tempBelitan < 10 && tempIntiBesi < 10){
+      trafoStatus = "undefined";
+    } else if(tempAtas < 10 && tempSamping < 10){
       greenOn();
-    } else if(tempBelitan < 30 || tempIntiBesi < 30){
+      trafoStatus = "Normal";
+    } else if(tempAtas < 30 || tempSamping < 30){
       yellowOn(); 
+      trafoStatus = "Warning";
     } else{
-      redOn(); 
+      redOn();
+      trafoStatus = "Emergency";
     }
     
-    if(tempBelitan < 30 && tempIntiBesi < 30){
+    if(tempAtas < 30 && tempSamping < 30){
       stopMotor();
     } else {
       runMotor();
     }
 
-    if(tempBelitan > 1000 || tempIntiBesi > 1000){
+    if(tempAtas > 1000 || tempSamping > 1000){
       stopMotor();
     } 
     
@@ -159,8 +166,9 @@ void loop() {
       // Specify content-type header
       http.addHeader("Content-Type", "application/json");
       // Data to send with HTTP POST
-      String httpRequestData = "{\"temp_belitan\":" + (String)tempBelitan + ",";
-      httpRequestData += "\"temp_intibesi\":" + (String)tempIntiBesi + "}";
+      String httpRequestData = "{\"temp_atas\":" + (String)tempAtas + ",";
+      httpRequestData += "\"temp_samping\":" + (String)tempSamping + ",";
+      httpRequestData += "\"temp_status\":" + trafoStatus + "}";
       Serial.println(httpRequestData);       
       // Send HTTP POST request
       int httpResponseCode = http.POST(httpRequestData);

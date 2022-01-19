@@ -92,23 +92,23 @@
               <li class="nav-item">
                 <a
                   class="nav-link link text-white display-7"
-                  href="#fitur"
+                  href="#status_trafo"
                   aria-expanded="false"
                   >Semua Fitur</a
                 >
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link link text-white display-7" href="#panduan"
                   >Panduan</a
                 >
-              </li>
-              <li class="nav-item">
+              </li> -->
+              <!-- <li class="nav-item">
                 <a
                   class="nav-link link text-white display-7"
                   href="#kontributor"
                   >Kontributor</a
                 >
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -121,18 +121,12 @@
           <div class="col-12 col-md-12 col-lg md-pb text-white">
             <div class="text-wrapper">
               <h1
-                class="
-                  mbr-section-title
-                  align-left
-                  mbr-fonts-style
-                  mb-3
-                  display-2
-                "
+                class="mbr-section-title align-left mbr-fonts-style mb-3 display-2"
               >
                 Sistem Monitoring Suhu Transformator berbasis IoT
               </h1>
               <p class="mbr-text align-left mbr-fonts-style pb-4 display-7">
-                Oleh <strong>Davin Darmalaksana Bhagaspati</strong>
+                Oleh <strong>Alya Febryvian</strong>
               </p>
               <div class="align-left mbr-section-btn mt-3">
                 <a class="btn btn-lg btn-white-outline display-7" href="#fitur"
@@ -161,29 +155,19 @@
           <div class="col-12 col-md-12 col-lg-12 pb-5">
             <canvas id="myChart"></canvas>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 pb-5">
+          <div class="col-12 pb-5">
             <a id="status_trafo" href="#"
               ><div id="status_card" class="card-wrapper fitur-padding">
                 <!-- style="background: rgb(0, 255, 0)" -->
                 <div class="card-box align-center">
                   <span class="mbr-iconfont mobi-mbri-protect mobi-mbri"></span>
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong>Status Trafo</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong id="status_stat">Initializing</strong>
                   </p>
@@ -191,57 +175,75 @@
               </div>
             </a>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 pb-5">
-            <a id="temp" href="#" onclick="tempClick(event)">
+          <div class="col-12 col-md-6 col-lg-3 pb-5">
+            <a id="temp_atas" href="#" onclick="tempClick(event)">
               <div class="card-wrapper fitur-padding">
                 <div class="card-box align-center">
                   <span class="mbr-iconfont mobi-mbri-desktop mobi-mbri"></span>
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
-                    <strong id="temp_name">Suhu Belitan</strong>
+                    <strong id="temp_name_atas">Suhu Badan Atas</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
-                    <strong id="temp_stat">Initializing</strong>
+                    <strong id="temp_stat_atas">Initializing</strong>
                   </p>
                 </div>
               </div>
             </a>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 pb-5">
-            <a id="fan" href="#">
+          <div class="col-12 col-md-6 col-lg-3 pb-5">
+            <a id="temp_samping" href="#" onclick="tempClick(event)">
               <div class="card-wrapper fitur-padding">
+                <div class="card-box align-center">
+                  <span class="mbr-iconfont mobi-mbri-desktop mobi-mbri"></span>
+                  <h4
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
+                  >
+                    <strong id="temp_name_samping">Suhu Badan Samping</strong>
+                  </h4>
+                  <p
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
+                  >
+                    <strong id="temp_stat_samping">Initializing</strong>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 pb-5">
+            <a id="temp_minyak" href="#" onclick="tempClick(event)">
+              <div class="card-wrapper fitur-padding">
+                <div class="card-box align-center">
+                  <span class="mbr-iconfont mobi-mbri-desktop mobi-mbri"></span>
+                  <h4
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
+                  >
+                    <strong id="temp_minyak">Estimasi Suhu Minyak</strong>
+                  </h4>
+                  <p
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
+                  >
+                    <strong id="temp_stat_minyak">Initializing</strong>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 pb-5">
+            <a id="fan" href="#">
+              <div class="card-wrapper fitur-padding" id="led_fan">
                 <div class="card-box align-center">
                   <span class="mbr-iconfont mobi-mbri-speed mobi-mbri"></span>
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong>Fan</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong id="fan_stat">Initializing</strong>
                   </p>
@@ -251,28 +253,23 @@
           </div>
           <div class="col-12 col-md-6 col-lg-3 pb-5">
             <a id="ind_1" href="#">
-              <div class="card-wrapper fitur-padding">
+              <div class="card-wrapper fitur-padding led_color" id="led_white">
                 <div class="card-box align-center">
-                  <span
+                  <!-- <span
                     class="mbr-iconfont mobi-mbri-growing-chart mobi-mbri"
-                  ></span>
+                  ></span> -->
+                  <!-- tes -->
+                  <span>
+                    <img src="assets/images/led-white.png" alt="" />
+                  </span>
+                  <!-- tes -->
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
-                    <strong>Indikator 1</strong>
+                    <strong>LED Putih</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong id="ind_1_stat">Initializing</strong>
                   </p>
@@ -282,28 +279,21 @@
           </div>
           <div class="col-12 col-md-6 col-lg-3 pb-5">
             <a id="ind_2" href="#">
-              <div class="card-wrapper fitur-padding">
+              <div class="card-wrapper fitur-padding led_color" id="led_green">
                 <div class="card-box align-center">
-                  <span
+                  <!-- <span
                     class="mbr-iconfont mobi-mbri-growing-chart mobi-mbri"
-                  ></span>
+                  ></span> -->
+                  <span>
+                    <img src="assets/images/led-green.png" alt="" />
+                  </span>
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
-                    <strong>Indikator 2</strong>
+                    <strong>LED Hijau</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong id="ind_2_stat">Initializing</strong>
                   </p>
@@ -313,28 +303,21 @@
           </div>
           <div class="col-12 col-md-6 col-lg-3 pb-5">
             <a id="ind_3" href="#">
-              <div class="card-wrapper fitur-padding">
+              <div class="card-wrapper fitur-padding led_color" id="led_yellow">
                 <div class="card-box align-center">
-                  <span
+                  <!-- <span
                     class="mbr-iconfont mobi-mbri-growing-chart mobi-mbri"
-                  ></span>
+                  ></span> -->
+                  <span>
+                    <img src="assets/images/led-yellow.png" alt="" />
+                  </span>
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
-                    <strong>Indikator 3</strong>
+                    <strong>LED Kuning</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong id="ind_3_stat">Initializing</strong>
                   </p>
@@ -344,28 +327,21 @@
           </div>
           <div class="col-12 col-md-6 col-lg-3 pb-5">
             <a id="ind_4" href="#">
-              <div class="card-wrapper fitur-padding">
+              <div class="card-wrapper fitur-padding led_color" id="led_red">
                 <div class="card-box align-center">
-                  <span
+                  <!-- <span
                     class="mbr-iconfont mobi-mbri-growing-chart mobi-mbri"
-                  ></span>
+                  ></span> -->
+                  <span>
+                    <img src="assets/images/led-red.png" alt="" />
+                  </span>
                   <h4
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
-                    <strong>Indikator 4</strong>
+                    <strong>LED Merah</strong>
                   </h4>
                   <p
-                    class="
-                      card-title
-                      align-center
-                      mbr-black mbr-fonts-style
-                      display-7
-                    "
+                    class="card-title align-center mbr-black mbr-fonts-style display-7"
                   >
                     <strong id="ind_4_stat">Initializing</strong>
                   </p>
@@ -377,7 +353,7 @@
       </div>
     </section>
 
-    <section class="content3 cid-sg6ZzTQ3BZ" id="panduan">
+    <!-- <section class="content3 cid-sg6ZzTQ3BZ" id="panduan">
       <div class="container">
         <div class="row justify-content-center">
           <div class="counter-container col-md-12 col-lg-">
@@ -486,19 +462,14 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="team2 cid-sg6YfBU2eL" id="kontributor">
+    <!-- <section class="team2 cid-sg6YfBU2eL" id="kontributor">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 pb-5">
             <h3
-              class="
-                mbr-section-title mbr-fonts-style
-                align-center
-                mb-4
-                display-2
-              "
+              class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"
             >
               Kontributor
             </h3>
@@ -526,15 +497,14 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="footer2 cid-sN3e0bkoFG" once="footers" id="footer">
       <div class="container">
         <div class="media-container-row align-center mbr-white">
           <div class="col-12">
             <p class="mbr-text mb-0 mbr-fonts-style display-7">
-              © Copyright 2021. Davin Darmalaksana Bhagaspati - All Rights
-              Reserved
+              © Copyright 2022. Alya Febryvian - All Rights Reserved
             </p>
           </div>
         </div>

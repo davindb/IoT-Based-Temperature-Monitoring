@@ -5,7 +5,7 @@ const myChart = new Chart(ctx, {
     labels: [],
     datasets: [
       {
-        label: "Suhu Belitan",
+        label: "Suhu Badan Atas",
         data: [],
         backgroundColor: "transparent",
         borderColor: "rgb(220, 0, 0)",
@@ -13,7 +13,7 @@ const myChart = new Chart(ctx, {
         tension: 0.3,
       },
       {
-        label: "Suhu Inti Besi",
+        label: "Suhu Badan Samping",
         data: [],
         backgroundColor: "transparent",
         borderColor: "rgb(75, 192, 192)",
