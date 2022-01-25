@@ -1,31 +1,22 @@
 import express from "express";
 
-// begin:: TES
-// const jsonFile = require("jsonfile");
-// const fs = require("fs");
-// var obj = {
-//   table: [],
-// };
-// obj.table.push({ id: 1, square: 2 });
-// end:: TES
-
 const router = express.Router();
 
-const temperatures = [];
+let temperatures = [];
 
 setInterval(function () {
-  const statusArr = ["undefined", "Normal", "Warning", "Emergency"];
-  const temp_status = statusArr[Math.floor(Math.random() * 5)];
   const temp_atas = Math.round(Math.random() * 100);
   const temp_samping = Math.round(Math.random() * 100);
+  const temp_status = "Normal";
   const date = new Date().toISOString();
 
   const data = {
-    temp_status,
     temp_atas,
     temp_samping,
+    temp_status,
     date,
   };
+  console.log(data);
 
   temperatures.push(data);
   // begin:: TES
@@ -58,6 +49,16 @@ router.post("/", (req, res) => {
   const data = req.body;
   console.log(data);
   data.date = new Date().toISOString();
+
+  // begin:: Clear resource
+  if (temperatures.length === 40) {
+    temperatures = temperatures.slice(
+      temperatures.length - 19,
+      temperatures.length
+    );
+  }
+  // end:: Clear resource
+
   temperatures.push(data);
   res.send(data);
 });
