@@ -1,4 +1,4 @@
-const url = `http://localhost:5000/temperatures`;
+const url = `https://sistem-monitoring-suhu-iot.herokuapp.com/temperatures`;
 const konstantaMinyak = 1.7749;
 let tempData,
   currTemp,
