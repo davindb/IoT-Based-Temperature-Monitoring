@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(express.static("public"));
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
