@@ -1,5 +1,5 @@
-const url = `https://sistem-monitoring-suhu-iot.herokuapp.com/temperatures`;
-// const url = `http://localhost:5000/temperatures`;
+// const url = `https://sistem-monitoring-suhu-iot.herokuapp.com/temperatures`;
+const url = `http://localhost:5000/temperatures`;
 
 const konstantaMinyak = 1.7749;
 let tempData,
@@ -14,7 +14,7 @@ let tempData,
 
 const delayTimeArr = [];
 lastLen = 0;
-let stop = false;
+let stopSystemCount = 0;
 
 setInterval(function () {
   $.ajax({
@@ -42,17 +42,21 @@ setInterval(function () {
   currLen = tempData.length;
 
   if (lastLen === currLen) {
-    tempData = [];
-    indikator(0);
-    $("#status_stat").text("SYSTEM IS OFF");
-    $("#status_card").css({ background: "rgb(215,215,215)" });
-    $("#temp_stat_atas").text("OFF");
-    $("#temp_stat_samping").text("OFF");
-    $("#temp_stat_minyak").text("NONE");
-    $(".led_color").css({ background: "rgb(255,255,255)" });
+    stopSystemCount++;
+    if (stopSystemCount >= 10) {
+      tempData = [];
+      indikator(0);
+      $("#status_stat").text("SYSTEM IS OFF");
+      $("#status_card").css({ background: "rgb(215,215,215)" });
+      $("#temp_stat_atas").text("OFF");
+      $("#temp_stat_samping").text("OFF");
+      $("#temp_stat_minyak").text("NONE");
+      $(".led_color").css({ background: "rgb(255,255,255)" });
+    }
     return;
   }
 
+  stopSystemCount = 0;
   lastLen = tempData.length;
 
   // begin:: Calculate the delay time
