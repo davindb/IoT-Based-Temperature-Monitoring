@@ -1,5 +1,4 @@
-const url = `https://sistem-monitoring-suhu-iot.herokuapp.com/temperatures`;
-// const url = `http://localhost:5000/temperatures`;
+const url = `http://localhost:5000/temperatures`;
 
 const konstantaMinyak = 1.7749;
 let tempData,
@@ -13,8 +12,17 @@ let tempData,
   currLen;
 
 const delayTimeArr = [];
-lastLen = 0;
-let stopSystemCount = 0;
+lastLen = Number(window.localStorage.lastLen);
+if (!window.localStorage.lastLen) {
+  lastLen = 0;
+  localStorage.setItem("lastLen", lastLen);
+}
+
+let stopSystemCount = Number(window.localStorage.stopSystemCount);
+if (!window.localStorage.stopSystemCount) {
+  stopSystemCount = 0;
+  localStorage.setItem("stopSystemCount", stopSystemCount);
+}
 
 setInterval(function () {
   $.ajax({
@@ -42,7 +50,6 @@ setInterval(function () {
   currLen = tempData.length;
 
   if (lastLen === currLen) {
-    stopSystemCount++;
     if (stopSystemCount >= 10) {
       tempData = [];
       indikator(0);
@@ -52,12 +59,17 @@ setInterval(function () {
       $("#temp_stat_samping").text("OFF");
       $("#temp_stat_minyak").text("NONE");
       $(".led_color").css({ background: "rgb(255,255,255)" });
+      return;
     }
+    stopSystemCount++;
+    localStorage.setItem("stopSystemCount", stopSystemCount);
     return;
   }
 
   stopSystemCount = 0;
+  localStorage.setItem("stopSystemCount", stopSystemCount);
   lastLen = tempData.length;
+  localStorage.setItem("lastLen", lastLen);
 
   // begin:: Calculate the delay time
   delayTime = new Date() - new Date(currTemp.date);
