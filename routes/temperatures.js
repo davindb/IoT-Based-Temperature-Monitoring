@@ -26,4 +26,9 @@ router.post("/", (req, res) => {
   res.send(data);
 });
 
+router.delete("/", (req, res) => {
+  temperatures = [];
+  res.send(temperatures);
+});
+
 export default router;
