@@ -11,7 +11,7 @@ let tempData,
   lastLen,
   currLen;
 
-const delayTimeArr = [];
+let delayTimeArr = [];
 lastLen = Number(window.localStorage.lastLen);
 if (!window.localStorage.lastLen) {
   lastLen = 0;
@@ -105,8 +105,9 @@ setInterval(function () {
   tempMinyak = Math.round(tempMinyak);
 
   if (currTemp.temp_status === "undefined") {
-    tempAtas = "NOT DETECTED";
-    tempSamping = "NOT DETECTED";
+    tempAtas = currTemp.temp_atas > 1000 ? "NOT DETECTED" : currTemp.temp_atas;
+    tempSamping =
+      currTemp.temp_samping > 1000 ? "NOT DETECTED" : currTemp.temp_samping;
     tempMinyak = "NONE";
   }
   $("#temp_stat_atas").text(
