@@ -105,9 +105,8 @@ setInterval(function () {
   tempMinyak = Math.round(tempMinyak);
 
   if (currTemp.temp_status === "undefined") {
-    tempAtas = currTemp.temp_atas > 1000 ? "NOT DETECTED" : currTemp.temp_atas;
-    tempSamping =
-      currTemp.temp_samping > 1000 ? "NOT DETECTED" : currTemp.temp_samping;
+    tempAtas = tempAtas > 1000 ? "NOT DETECTED" : `${tempAtas} °C`;
+    tempSamping = tempSamping > 1000 ? "NOT DETECTED" : `${tempSamping} °C`;
     tempMinyak = "NONE";
   }
   $("#temp_stat_atas").text(
